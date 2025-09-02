@@ -1,0 +1,22 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "tasky-app-10672",
+                    "appId": "1:679198978165:android:ae73749affd2f9bab8083c",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "tasky-app-10672",
+                    "configurations": {
+                        "android": "1:679198978165:android:ae73749affd2f9bab8083c",
+                        "ios": "1:679198978165:ios:ec037cc6cb7b61d1b8083c"
+                    }
+                }
+            }
+        }
+    }
+}
