@@ -4,7 +4,6 @@ import 'package:tasky_app/core/widgets/material_button_widget.dart';
 import 'package:tasky_app/features/auth/veiw/widgets/text_form_feild_helper.dart';
 import 'package:tasky_app/features/home/data/firebase/task_firebase.dart';
 import 'package:tasky_app/features/home/data/model/task_model.dart';
-import 'package:tasky_app/features/home/view/presentation/home_screen.dart';
 import 'package:tasky_app/features/home/view/widgets/calendar_widget.dart';
 import 'package:tasky_app/features/home/view/widgets/show_priority_dialog_widget.dart';
 
@@ -64,7 +63,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                       onTap: () async {
                         await TaskFirebase.updateDoneTask(widget.task!.id);
                         setState(() {
-                          widget.task!.isDone = !(widget.task!.isDone ?? false);
+                          widget.task!.isDone = !(widget.task!.isDone);
                         });
                       },
                       child: Container(
