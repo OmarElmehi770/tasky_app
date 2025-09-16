@@ -56,4 +56,14 @@ class TaskFirebase {
     bool currentDone = await data.data()?.isDone ?? false;
     await task.update({'isDone': !currentDone});
   }
+
+  static Future<void> updateTask(String? id, TaskModel task) async {
+    await getCollectionTasks().doc(id).update({
+      'id': id,
+      'title': task.title,
+      'desc': task.desc,
+      'date': task.date!.millisecondsSinceEpoch,
+      'priority': task.priority,
+    });
+  }
 }

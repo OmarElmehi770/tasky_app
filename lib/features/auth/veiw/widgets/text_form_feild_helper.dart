@@ -16,9 +16,10 @@ class TextFormFieldHelper extends StatefulWidget {
   final IconData? icon;
   final TextInputAction? action;
   final FocusNode? focusNode;
-
+  final bool? hasBorder;
   final BorderRadius? borderRadius;
   final bool? isMobile;
+  final TextStyle? style;
 
   const TextFormFieldHelper({
     super.key,
@@ -46,6 +47,8 @@ class TextFormFieldHelper extends StatefulWidget {
     this.focusNode,
     this.borderRadius,
     this.isMobile,
+    this.hasBorder,
+    this.style,
   });
 
   @override
@@ -99,7 +102,7 @@ class _TextFormFieldHelperState extends State<TextFormFieldHelper> {
       textInputAction: widget.action ?? TextInputAction.next,
       focusNode: widget.focusNode,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      style: TextStyle(
+      style: widget.style ?? TextStyle(
         fontSize: 16,
         // fontFamily: FontFamilyHelper.tajawalArabic,
         color: Theme.of(context).primaryColor,
@@ -139,11 +142,21 @@ class _TextFormFieldHelperState extends State<TextFormFieldHelper> {
           horizontal: 15,
           vertical: 15,
         ),
-        border: outlineInputBorder(color: Color(0xffBABABA), width: 1),
-        enabledBorder: outlineInputBorder(color: Color(0xffBABABA), width: 1),
-        focusedBorder: outlineInputBorder(color: Color(0xffBABABA), width: 1),
-        errorBorder: outlineInputBorder(color: Colors.red, width: 1),
-        focusedErrorBorder: outlineInputBorder(color: Colors.red, width: 1),
+        border: widget.hasBorder == null
+            ? outlineInputBorder(color: Color(0xffBABABA), width: 1)
+            : InputBorder.none,
+        enabledBorder: widget.hasBorder == null
+            ? outlineInputBorder(color: Color(0xffBABABA), width: 1)
+            : InputBorder.none,
+        focusedBorder: widget.hasBorder == null
+            ? outlineInputBorder(color: Color(0xffBABABA), width: 1)
+            : InputBorder.none,
+        errorBorder: widget.hasBorder == null
+            ? outlineInputBorder(color: Colors.red, width: 1)
+            : InputBorder.none,
+        focusedErrorBorder: widget.hasBorder == null
+            ? outlineInputBorder(color: Colors.red, width: 1)
+            : InputBorder.none,
       ),
     );
   }
